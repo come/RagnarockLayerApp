@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'"> -->
+    
+    <title>Ragnarock</title>
+    <link href="style.css" rel="stylesheet">
+  </head>
+  <body>
+    <div id="main">
+      <div class="hammer" id="lefthammer"></div>
+      <div class="hammer" id="righthammer"></div>
+    </div>
+    <div id="layer">
+      <div id="topleft">
+        <div class="cont">
+          <div id="currentHit">
+            <div id="currentHitLabel">Current Streak : </div>
+            <div id="currentHitValue">64</div>
+          </div>
+          <div id="totalHit">
+            <div id="totalHitValue">512</div>
+            <div id="totalHitLabel">Notes hit !</div>
+          </div>
+          <div id="totalMiss">
+            <div id="totalMissValue">2</div>
+            <div id="totalMissLabel">Missed</div>
+          </div>
+        </div>
+      </div>
+      
+      <div id="topright">
+        <div class="cont">
+          <div id="currentPerfect">
+            <div id="currentPerfectValue">150</div>
+            <div id="currentPerfectLabel">Perfects Streak</div>
+          </div> 
+        </div>
+      </div>
+      <div id="bottomleft">
+        <div class="container">
+          <img src="images/TwitchScreen_Speed_Arrow.png" id="perfectGauge" />
+          <div id="perfectPercent">
+          57%
+          </div>
+        </div>
+
+      </div>
+      <div id="bottomright">
+        <div id="perfectGaugeLabel">Combo</div>
+        <div id="perfectGaugeValue"></div>
+        <img src="images/TwitchScreen_Combo_Base.png" id="perfectGauge" />
+        <div id="nbCombos">
+          <div id="nbCombosValue">10</div>
+        </div>
+      </div>
+    </div>
+    <script src="./renderer.js"></script>
+  </body>
+</html>
