@@ -1,5 +1,8 @@
 console.log('renderer js')
 
+var currentSongName = "";
+var currentSongBand = "";
+
 var currentHits = 0;
 var currentHitStreak = 0;
 var currentMissed = 0;
@@ -16,6 +19,8 @@ var comboTriggered = 0;
 
 
 var resetData = function () {
+  currentSongName = "";
+  currentSongBand = "";
   currentHits = 0;
   currentHitStreak = 0;
   currentMissed = 0;
@@ -34,6 +39,11 @@ var getComboMax = function() {
 
 var getComboMin = function() {
   return comboMin + comboTriggeredIncrement * comboTriggered;
+}
+
+var updateSong = function() {
+  document.getElementById("currentSongName").innerHTML = currentSongName;
+  document.getElementById("currentSongBand").innerHTML = currentSongBand;
 }
 
 var updateComboGauge = function(data) {
@@ -90,6 +100,7 @@ var updateValues = function() {
   updateCurrentPerfectStreak();
   updateCurrentPerfectMedian();
   updateComboGauge();
+  updateSong();
 }
 
 updateValues();
@@ -139,11 +150,12 @@ window.ragnarockApi.onMessage((_event, value) => {
     
     if (message.event == "StartSong") {
       resetData();
+      currentSongName = data.SongName;
+      currentSongBand = data.SongBand;
       updateValues();
-
     }
 
-     if (message.event == "StartSong" || message.event == "ragnarockInitConnection") {
+     if (message.event == "ragnarockInitConnection") {
       resetData();
       updateValues();
       

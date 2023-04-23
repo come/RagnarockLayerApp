@@ -107,6 +107,61 @@ body, html {
   position: relative;
 }
 
+#topcenter{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  background-image: url("images/TwitchScreen_Song.png");
+  background-size: contain;background-repeat: no-repeat;
+  transform: rotate(5deg);
+  width: 400px;
+  height: 200px;
+}
+
+#currentSong{
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  width: 74%;
+  margin-top: 23.5%;
+  margin-left: 14%;
+  transform: rotate(-5deg);
+  overflow: hidden;
+  white-space: nowrap;
+  color: white;
+}
+
+#currentSongName{
+  display: inline-flex;
+  justify-content: center;
+  min-width: 100%;
+  font-size: 1.25em;
+  line-height: 1;
+  text-align: center;
+  animation: backAndForth 10s linear infinite alternate;
+}
+
+#currentSongBand{
+  display: inline-flex;
+  justify-content: center;
+  min-width: 100%;
+  font-size: 0.75em;
+  text-align: center;
+  animation: backAndForth 5s linear infinite alternate;
+}
+
+@keyframes backAndForth {
+  0% { transform: translateX(0); }
+  10% { transform: translateX(0); }
+  45% { transform: translateX(calc(-100% + 296px)); }
+  55% { transform: translateX(calc(-100% + 296px)); }
+  90% { transform: translateX(0); }
+  100% { transform: translateX(0); }
+}
+
 #topright{
   position: absolute;
   top: 0;
