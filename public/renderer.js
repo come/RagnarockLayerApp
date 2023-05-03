@@ -91,12 +91,11 @@ var updateCurrentPerfectMedian = function() {
     var percent = Math.round(currentPerfect / (currentHits+currentMissed) * 100);
   }
   if (isNaN(percent)) {
-    percent = 100;
+    percent = 0;
   }
   
   if (enableAccuratePerfectPercent) {
     document.getElementById("perfectPercent").innerHTML = percent.toFixed(2)+"%";
-    document.getElementById("perfectPercent").style = 'font-size: 0.7em; top: 62%;';
   } else {
     document.getElementById("perfectPercent").innerHTML = percent+"%";
   }
