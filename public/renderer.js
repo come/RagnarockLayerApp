@@ -84,11 +84,22 @@ var updateCurrentPerfectStreak = function() {
 }
 
 var updateCurrentPerfectMedian = function() {
-  var percent = Math.round(currentPerfect / (currentHits+currentMissed) * 100);
-  if (isNaN(percent)) {
-    percent = 0;
+  var enableAccuratePerfectPercent = window.configStore.get('enableAccuratePerfectPercent', false);
+  if (enableAccuratePerfectPercent) {
+    var percent = Math.round(currentPerfect / (currentHits+currentMissed) * 10000) / 100;
+  } else {
+    var percent = Math.round(currentPerfect / (currentHits+currentMissed) * 100);
   }
-  document.getElementById("perfectPercent").innerHTML = percent+"%";
+  if (isNaN(percent)) {
+    percent = 100;
+  }
+  
+  if (enableAccuratePerfectPercent) {
+    document.getElementById("perfectPercent").innerHTML = percent.toFixed(2)+"%";
+    document.getElementById("perfectPercent").style = 'font-size: 0.7em; top: 62%;';
+  } else {
+    document.getElementById("perfectPercent").innerHTML = percent+"%";
+  }
   var rot = -90 + percent/100 * 180;
   document.getElementById("perfectGauge").style.transform = "rotate("+rot+"deg)";
 }
