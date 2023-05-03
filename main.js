@@ -4,6 +4,7 @@ const fs = require('fs');
 const ini = require('ini');
 const WebSocket = require('ws');
 const ip = require("ip");
+const Store = require('electron-store');
 
 //lets see if the config is here
 
@@ -40,6 +41,7 @@ function createWindow() {
     alwaysOnTop:true,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
+      sandbox: false,
     },
   })
   mainWindow.setIgnoreMouseEvents(true);
@@ -51,6 +53,7 @@ function createWindow() {
 
 
   checkConfig();
+  Store.initRenderer();
 
   const webSocketServer = new WebSocket.Server({ port: 8033 });
   webSocketServer.on('connection', (webSocketConnection) => {
